@@ -9,7 +9,12 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/595365771/StickyRecyclerView.git']]])
+        // checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/595365771/StickyRecyclerView.git']]])
+
+        git(branch: 'master',  
+            url: 'https://github.com/595365771/StickyRecyclerView.git',  
+            credentialsId: '3001' // 替换为你在 Jenkins 中设置的凭据ID
+           ) 
       }
     }
 
