@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'Android'
+    }
+
+  }
   stages {
     stage('initiate') {
       steps {
@@ -9,10 +14,7 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        git(branch: 'master',  
-          url: 'https://github.com/595365771/StickyRecyclerView.git',  
-            credentialsId: '1001' // 替换为你在 Jenkins 中设置的凭据ID
-            )
+        git(branch: 'master', url: 'https://github.com/595365771/StickyRecyclerView.git', credentialsId: '1001')
       }
     }
 
@@ -22,11 +24,12 @@ pipeline {
         sh './gradlew clean build'
       }
     }
+
   }
-post {
+  post {
     always {
-      // 总是存档构建成品
       archiveArtifacts '/Users/shiyiheng/.jenkins/workspace/JenkinsAndroid_main/app/build/outputs/apk/release/*'
     }
-}
+
+  }
 }
