@@ -28,7 +28,7 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts '/Users/shiyiheng/.jenkins/workspace/JenkinsAndroid_main/app/build/outputs/apk/release/*'
+      archiveArtifacts 'app/build/outputs/apk/release/*'
     }
 
   }
