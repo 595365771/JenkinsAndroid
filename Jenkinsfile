@@ -13,8 +13,10 @@ pipeline {
 
         git(branch: 'master',  
             url: 'https://github.com/595365771/StickyRecyclerView.git',  
-            credentialsId: '3001' // 替换为你在 Jenkins 中设置的凭据ID
-           ) 
+            credentialsId: '1001' // 替换为你在 Jenkins 中设置的凭据ID
+           )
+      }
+       steps {
         echo 'Checkout Successful'
       }
     }
@@ -23,6 +25,8 @@ pipeline {
       steps {
         sh 'chmod +x ./gradlew'
         sh './gradlew clean build'
+      }
+      steps {
         echo 'Android build complete'
       }
     }
@@ -36,6 +40,5 @@ pipeline {
         archiveArtifacts '/Users/shiyiheng/.jenkins/workspace/JenkinsAndroid_main/app/build/outputs/apk/release/*'
       }
     }
-
   }
 }
