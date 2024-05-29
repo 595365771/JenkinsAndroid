@@ -14,7 +14,7 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        git(branch: 'master', url: 'https://github.com/595365771/StickyRecyclerView.git', credentialsId: '1001')
+        git(branch: 'master', url: 'https://github.com/595365771/StickyRecyclerView.git', credentialsId: '1001', changelog: true, poll: true)
       }
     }
 
